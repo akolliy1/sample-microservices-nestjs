@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  lafia:
+    image: talentgraph-identity-service
+    ports:
+      - 9000
+    labels:
+      kompose.service.type: NodePort
+    env_file: .env
+    volumes:
+      - .:/home/talentgraph-identity-service
+    networks:
+      - main_network
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      - MONGODB_DATABASE="talentgraph"
+    ports:
+      - 27017:27017
+
+  # postgres:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: talentgraph
+  #     POSTGRES_DB: talentgraphdb
+  #     POSTGRES_PASSWORD: talentgraphpasswd
+  #   ports:
+  #     - 5432
+  #   volumes:
+  #     - ./.data/postgres-data:/var/lib/postgresql/data
+  #   networks:
+  #     - main_network
+
+networks:
+  main_network:
+    driver: bridge

@@ -1,0 +1,33 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/identity-service/src",
+  "compilerOptions": {
+    "plugins": [
+      "@nestjs/swagger"
+    ],
+    "webpack": true,
+    "tsConfigPath": "apps/identity-service/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/identity-service",
+  "projects": {
+    "identity-service": {
+      "type": "application",
+      "root": "apps/identity-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/identity-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/identity-service/tsconfig.app.json"
+      }
+    },
+    "learning": {
+      "type": "application",
+      "root": "apps/learning",
+      "entryFile": "main",
+      "sourceRoot": "apps/learning/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/learning/tsconfig.app.json"
+      }
+    }
+  }
+}
